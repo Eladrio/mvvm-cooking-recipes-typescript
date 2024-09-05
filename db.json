@@ -1,0 +1,30 @@
+{
+  "recipes": [
+    {
+      "id": "01",
+      "name": "Spaghetti Bolognese",
+      "ingredients": [
+        "500g ground beef",
+        "1 onion",
+        "2 cloves garlic",
+        "1 can tomatoes",
+        "200g spaghetti",
+        "1 tsp olive oil",
+        "Salt and pepper to taste"
+      ],
+      "time": 30,
+      "description": "Classic Italian dish with savory ground beef and tomato sauce served over a bed of perfectly cooked spaghetti."
+    },
+    {
+      "id": "a46f",
+      "name": "Pizza",
+      "description": "Pizza crocante",
+      "ingredients": [
+        "Queso 400g",
+        "Harina 200g",
+        "Salsa de Tomate 100g"
+      ],
+      "time": 33
+    }
+  ]
+}

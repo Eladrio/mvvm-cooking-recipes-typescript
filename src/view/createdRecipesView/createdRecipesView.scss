@@ -1,0 +1,37 @@
+.created-recipes-view {
+
+  &__title {
+    margin-top: 20px;
+    font-size: 32px;
+  }
+
+  &__recipes-list {
+    width: 60%;
+    margin: 30px auto 0 auto;
+    padding: 0 15px;
+    min-height: 40vh;
+    padding-bottom: 15px;
+  }
+
+  &__created-card.card {
+    margin: 20px;
+    box-shadow: 0px 0px 4px 0px black;
+    background-color: white;
+  }
+
+  &__card-title {
+    font-size: 22px;
+  }
+
+  &__create-link {
+    background: none;
+    border: none;
+    color: #007bff;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    font: inherit;
+    outline: inherit;
+  }
+
+}

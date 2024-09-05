@@ -1,0 +1,29 @@
+.input-component {
+
+  &__block {
+      width: 50%;
+      margin: 4px auto 0 auto;
+  }
+
+  &__input-element {
+      background-color: floralwhite;
+      display: block;
+      width: 100%;
+      text-align: center;
+      
+      &--textarea {
+          text-align: left;
+          height: 75px;
+          resize: none;
+          border-width: 2px;
+          border-style: inset;
+          border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+          border-image: initial;
+      }
+  }
+
+  &__error {
+      font-size: 14px;
+      color: red;
+  }
+}

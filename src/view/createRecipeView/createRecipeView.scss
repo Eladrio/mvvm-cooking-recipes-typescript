@@ -1,0 +1,36 @@
+.create-recipe-view {
+    &__title {
+        margin-top: 20px;
+        font-size: 32px;
+        margin-bottom: 24px;
+    }
+
+    &__section {
+        width: 60%;
+        margin: 30px auto 0 auto;
+        padding: 0 15px;
+        min-height: 40vh;
+        border: 1px solid black;
+        border-radius: 6px;
+        box-shadow: 0px 0px 4px 0px black;
+        padding-bottom: 15px;
+        background-color: white;
+    }
+
+    &__section-title {
+        margin-top: 12px;
+        margin-bottom: 24px;
+        font-size: 22px;
+    }
+
+    &__created-card.card {
+        margin: 10px;
+        box-shadow: 0px 0px 4px 0px black;
+        background-color: floralwhite;
+    }
+
+    &__form-item {
+        margin-bottom: 20px;
+    }
+
+}
