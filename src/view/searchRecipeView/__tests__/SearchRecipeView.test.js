@@ -11,7 +11,6 @@ const mocksViewControllerHook = ({
   searchInputValue = "",
   mockedOnClick = () => {},
   mockedOnChange = () => {},
-  mockedOnInputKeyPressed = () => {},
   recipes = [],
   isLoading = false,
   error = false
@@ -21,9 +20,8 @@ const mocksViewControllerHook = ({
       mockedOnChange(value);
     };
     return {
-      onSearchRecipeClick: mockedOnClick,
+      handleFormSubmit: mockedOnClick,
       onSearchRecipeChange: onSearchRecipeChange,
-      onInputKeyPressed: mockedOnInputKeyPressed,
       recipes: recipes,
       searchInputValue: searchInputValue,
       isLoading: isLoading,
@@ -104,26 +102,6 @@ describe("Tests SearchRecipeView", () => {
     expect(onClickMock).toHaveBeenCalled();
   });
 
-  it("calls onInputKeyPressed when a key has been pressed while the input is focused", () => {
-    //mocks ViewControllere hook
-    const onKeyPressedMock = jest.fn();
-    mocksViewControllerHook({
-      searchInputValue: "pizza",
-      mockedOnInputKeyPressed: onKeyPressedMock,
-    });
-
-    render(<SearchRecipeView />);
-
-    // gets search button
-    const inputNode = screen.getByLabelText(
-      "Enter recipe's name"
-    );
-    expect(onKeyPressedMock).not.toHaveBeenCalled();
-    fireEvent.keyDown(inputNode, { key: "A", code: "KeyA" });
-
-    expect(onKeyPressedMock).toHaveBeenCalled();
-  });
-
   it("renders the recipes received from the ViewController", () => {
     //mocks ViewControllere hook
     const recipes = [
@@ -154,7 +132,7 @@ describe("Tests SearchRecipeView", () => {
 
     render(<SearchRecipeView />);
 
-    const loadingElement = screen.getByText("The Search is Loading");
+    const loadingElement = screen.getByText("The Search is Loading...");
 
     expect(loadingElement).toBeInTheDocument();
   });
@@ -165,7 +143,7 @@ describe("Tests SearchRecipeView", () => {
 
     render(<SearchRecipeView />);
 
-    const loadingElement = screen.getByText("There was an error fetching the recipes");
+    const loadingElement = screen.getByText("There was an error fetching the recipes. Please try again.");
 
     expect(loadingElement).toBeInTheDocument();
   });

@@ -1,8 +1,16 @@
-import React from "react";
+import { FormEvent } from "react";
 import FormComponent from "../../../../components/formComponent/formComponent";
 import InputComponent from "../../../../components/inputComponent/inputComponent";
+import { CreateRecipeInputsType, InputNames } from "../../../../types/recipeTypes";
 
-const CreateRecipeForm = ({
+type CreateRecipeFormPropsType = {
+  handleInputBlur: (name: InputNames, value: string) => void;
+  handleInputChange: (name: InputNames, value: string) => void;
+  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  inputs: CreateRecipeInputsType;
+};
+
+const CreateRecipeForm: React.FC<CreateRecipeFormPropsType> = ({
   handleInputBlur,
   handleInputChange,
   handleSubmit,
@@ -18,8 +26,8 @@ const CreateRecipeForm = ({
           type="text"
           value={inputs.name.value}
           valid={inputs.name.valid}
-          handleInputBlur={(e) => handleInputBlur(e.target.name, e.target.value)}
-          handleInputChange={(e) => handleInputChange(e.target.name, e.target.value)}
+          handleInputBlur={(e) => handleInputBlur(e.target.name as InputNames, e.target.value)}
+          handleInputChange={(e) => handleInputChange(e.target.name as InputNames, e.target.value)}
         />
       </div>
       <div className="create-recipe-view__form-item">
@@ -30,8 +38,8 @@ const CreateRecipeForm = ({
           type="textarea"
           value={inputs.description.value}
           valid={inputs.description.valid}
-          handleInputBlur={(e) => handleInputBlur(e.target.name, e.target.value)}
-          handleInputChange={(e) => handleInputChange(e.target.name, e.target.value)}
+          handleInputBlur={(e) => handleInputBlur(e.target.name as InputNames, e.target.value)}
+          handleInputChange={(e) => handleInputChange(e.target.name as InputNames, e.target.value)}
         />
       </div>
       <div className="create-recipe-view__form-item">
@@ -42,8 +50,8 @@ const CreateRecipeForm = ({
           type="textarea"
           value={inputs.ingredients.value}
           valid={inputs.ingredients.valid}
-          handleInputBlur={(e) => handleInputBlur(e.target.name, e.target.value)}
-          handleInputChange={(e) => handleInputChange(e.target.name, e.target.value)}
+          handleInputBlur={(e) => handleInputBlur(e.target.name as InputNames, e.target.value)}
+          handleInputChange={(e) => handleInputChange(e.target.name as InputNames, e.target.value)}
         />
       </div>
       <div className="create-recipe-view__form-item">
@@ -54,8 +62,8 @@ const CreateRecipeForm = ({
           type="number"
           value={inputs.time.value}
           valid={inputs.time.valid}
-          handleInputBlur={(e) => handleInputBlur(e.target.name, e.target.value)}
-          handleInputChange={(e) => handleInputChange(e.target.name, e.target.value)}
+          handleInputBlur={(e) => handleInputBlur(e.target.name as InputNames, e.target.value)}
+          handleInputChange={(e) => handleInputChange(e.target.name as InputNames, e.target.value)}
         />
       </div>
     </FormComponent>

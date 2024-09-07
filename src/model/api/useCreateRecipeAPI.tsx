@@ -5,7 +5,7 @@ export const useCreateRecipeAPI = () => {
   const client = useQueryClient();
 
   // useQuery to fetch the created recipes
-  const { data: recipes, error } = useQuery("createdRecipes", retrieveRecipesAPI, {
+  const { data: recipes = [], error } = useQuery("createdRecipes", retrieveRecipesAPI, {
     initialData: [],
   });
 

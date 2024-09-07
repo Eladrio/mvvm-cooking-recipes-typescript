@@ -25,6 +25,17 @@
         "Salsa de Tomate 100g"
       ],
       "time": 33
+    },
+    {
+      "id": "42da",
+      "name": "Napolitana",
+      "description": "Pizza Napolitana Crocante",
+      "ingredients": [
+        "Sal",
+        "Queso",
+        "Mozzarella"
+      ],
+      "time": 23
     }
   ]
 }

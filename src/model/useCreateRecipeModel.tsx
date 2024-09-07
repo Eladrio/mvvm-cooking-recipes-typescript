@@ -1,11 +1,12 @@
 import { useCallback } from "react";
 import { useCreateRecipeAPI } from "./api/useCreateRecipeAPI";
+import { CreatedRecipe } from "../types/recipeTypes";
 
 const useCreateRecipeModel = () => {
   const { mutate, error, recipes, addError } = useCreateRecipeAPI();
 
   const createRecipe = useCallback(
-    (data) => {
+    (data: CreatedRecipe) => {
       mutate(data);
     },
     [mutate]

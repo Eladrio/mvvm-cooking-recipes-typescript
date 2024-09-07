@@ -2,12 +2,12 @@ import { useCallback, useState } from "react";
 import useSearchRecipeModel from "../model/useSearchRecipeModel";
 
 const useSearchRecipeViewModel = () => {
-  const [searchInputValue, setSearchInputValue] = useState("");
-  const [lastFetchedSearchInputValue, setLastFetchedSearchInputValue] = useState("");
+  const [searchInputValue, setSearchInputValue] = useState<string>("");
+  const [lastFetchedSearchInputValue, setLastFetchedSearchInputValue] = useState<string>("");
 
   const { error, recipes, isLoading, handleButtonClick } = useSearchRecipeModel();
 
-  const setSearchValue = (value) => {
+  const setSearchValue = (value: string) => {
     setSearchInputValue(value);
   };
 

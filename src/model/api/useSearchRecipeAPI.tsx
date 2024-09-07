@@ -1,18 +1,19 @@
-import { useMutation, MutationFunction } from "react-query";
+import { useMutation, UseMutateFunction } from "react-query";
 import { retrieveRecipesSearchAPI } from "./search";
+import { RecipeAPIResult } from "../../types/recipeTypes";
 
 type SearchRecipeAPIType = {
-  recipes: Recipe[] | null;
   error: unknown;
-  mutate: MutationFunction<string, Promise<any>>;
   isLoading: boolean;
+  mutate: UseMutateFunction<RecipeAPIResult | null, unknown , string, unknown>;
+  recipes: RecipeAPIResult;
 }
 
 export const useSearchRecipeAPI = (): SearchRecipeAPIType => {
-  const { mutate, data, error, isLoading } = useMutation<Recipe[]>(retrieveRecipesSearchAPI);
-
+  const { mutate, data, error, isLoading } = useMutation<RecipeAPIResult, unknown, string>(retrieveRecipesSearchAPI);
+  const recipes = data ?? [];
   return {
-    recipes: data,
+    recipes,
     error,
     mutate,
     isLoading,

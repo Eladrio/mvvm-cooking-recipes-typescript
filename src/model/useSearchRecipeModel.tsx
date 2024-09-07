@@ -5,7 +5,7 @@ const useSearchRecipeModel = () => {
   const { recipes, isLoading, error, mutate } = useSearchRecipeAPI()
   
   const handleButtonClick = useCallback(
-    (query) => {
+    (query: string) => {
       mutate(query);
     },
     [mutate]

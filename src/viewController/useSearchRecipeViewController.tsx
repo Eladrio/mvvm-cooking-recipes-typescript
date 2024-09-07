@@ -1,20 +1,20 @@
-import { useCallback } from "react";
+import { FormEvent, useCallback } from "react";
 import useSearchRecipeViewModel from "../viewModel/useSearchRecipeViewModel";
 
 const useSearchRecipeViewController = () => {
   const { error, recipes, isLoading, onButtonClick, searchInputValue, setSearchInputValue } =
     useSearchRecipeViewModel();
 
-  const onSearchRecipeClick = useCallback(() => {
+  const onSearchRecipeClick = useCallback((): void => {
     onButtonClick();
   }, [onButtonClick]);
 
-  const onSearchRecipeChange = (value) => {
+  const onSearchRecipeChange = (value: string): void => {
     setSearchInputValue(value);
   };
 
   const handleFormSubmit = useCallback(
-    (event) => {
+    (event: FormEvent<HTMLFormElement>): void => {
       event.preventDefault();
       onSearchRecipeClick();
     },

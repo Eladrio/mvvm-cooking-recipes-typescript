@@ -1,8 +1,9 @@
-import { useCallback, useState } from "react";
+import { FormEvent, useCallback, useState } from "react";
 
 import useCreateRecipeViewModel from "../viewModel/useCreateRecipeViewModel";
+import { CreateRecipeInputsType, InputNames } from "../types/recipeTypes";
 
-const initialState = {
+const initialState: CreateRecipeInputsType = {
   name: {
     value: "",
     valid: true,
@@ -22,11 +23,11 @@ const initialState = {
 };
 
 const useCreateRecipeViewController = () => {
-  const [inputs, setInputs] = useState(initialState);
+  const [inputs, setInputs] = useState<CreateRecipeInputsType>(initialState);
 
   const { createRecipe, recipes, error, addError, validateInput } = useCreateRecipeViewModel();
 
-  const handleInputChange = useCallback((name, value) => {
+  const handleInputChange = useCallback((name: InputNames, value: string) => {
     setInputs((prevInputs) => ({
       ...prevInputs,
       [name]: {
@@ -37,7 +38,7 @@ const useCreateRecipeViewController = () => {
   }, []);
 
   const handleInputBlur = useCallback(
-    (name, value) => {
+    (name: InputNames, value: string) => {
       const updatedInputState = validateInput(name, value);
 
       setInputs((prevInputs) => ({
@@ -49,9 +50,9 @@ const useCreateRecipeViewController = () => {
   );
 
   const handleFormSubmit = useCallback(
-    (event) => {
+    (event: FormEvent<SubmitEvent>) => {
       const { name, description, ingredients, time } = inputs;
-      const data = {
+      const data: CreateRecipeInputsType = {
         name,
         description,
         ingredients,

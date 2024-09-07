@@ -61,43 +61,11 @@ describe("Tests useSearchRecipeViewController", () => {
     mocksViewModelHook({ mockedHandleButtonClick: handleButtonClickMock });
 
     const { result } = renderHook(useSearchRecipeViewController);
-
+    const mockEvent = { preventDefault: jest.fn() };
     // calls onSearchRecipeClick
-    await act(async () => result.current.onSearchRecipeClick());
+    await act(async () => result.current.handleFormSubmit(mockEvent));
 
     // checks that the validatedButtonClick function got called
     expect(handleButtonClickMock).toHaveBeenCalled();
-  });
-
-  it("calls onSearchRecipeClick when Enter key has been pressed", async () => {
-    const handleButtonClickMock = jest.fn();
-    mocksViewModelHook({ mockedHandleButtonClick: handleButtonClickMock });
-
-    const { result } = renderHook(useSearchRecipeViewController);
-
-    // calls onInputKeyPressed
-    const e = {
-      key: "Enter",
-    };
-    await act(async () => result.current.onInputKeyPressed(e));
-
-    // checks that the fetching function got called
-    expect(handleButtonClickMock).toHaveBeenCalled();
-  });
-
-  it("does not call onSearchRecipeClick when a key that is not the Enter key has been pressed", async () => {
-    const getRecipesMock = jest.fn();
-    mocksViewModelHook({ mockedGetRecipes: getRecipesMock });
-
-    const { result } = renderHook(useSearchRecipeViewController);
-
-    // calls onInputKeyPressed
-    const e = {
-      key: "A",
-    };
-    await act(async () => result.current.onInputKeyPressed(e));
-
-    // checks that the fetching function got called
-    expect(getRecipesMock).not.toHaveBeenCalled();
   });
 });

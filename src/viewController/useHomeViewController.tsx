@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 
-import { ROUTES } from '../constants/routes';
+import { ROUTES, RoutesType } from '../constants/routes';
 
 
 const useHomeViewController = () => {
     const navigate = useNavigate();
 
-  const handleRedirect = (destination) => {
+  const handleRedirect = (destination: RoutesType): void => {
     navigate(ROUTES[destination])
   };
   

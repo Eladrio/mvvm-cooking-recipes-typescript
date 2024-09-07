@@ -1,12 +1,11 @@
-import React from "react";
 import "./navbarComponent.scss";
 import { Link, useLocation } from "react-router-dom";
 
 import { ROUTES } from "../../constants/routes";
 
-const NavbarComponent = () => {
+const NavbarComponent: React.FC = () => {
   const { pathname } = useLocation();
-  let currentActiveTab;
+  let currentActiveTab: string | undefined;
   switch (pathname) {
     case ROUTES.HOME_ROUTE:
       currentActiveTab = '01';

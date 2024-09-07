@@ -1,12 +1,10 @@
 import "./SearchRecipeView.scss";
-// vendor
-import React from "react";
 // controller
 import useSearchRecipeViewController from "../../viewController/useSearchRecipeViewController";
 // component
 import RecipeItem from "../../components/recipeItem/recipeItem";
 
-const SearchRecipeView = () => {
+const SearchRecipeView: React.FC = (): JSX.Element => {
   const { error, recipes, isLoading, handleFormSubmit, onSearchRecipeChange, searchInputValue } =
     useSearchRecipeViewController();
 
@@ -28,7 +26,7 @@ const SearchRecipeView = () => {
       </form>
       <section className="search-recipe-view__results-container">
         {isLoading && <span aria-live="polite">The Search is Loading...</span>}
-        {error && <span aria-live="assertive">There was an error fetching the recipes. Please try again.</span>}
+        {error ? <span aria-live="assertive">There was an error fetching the recipes. Please try again.</span> : null}
         {recipes?.length > 0 &&
           recipes.map(({ recipe: { uri, label } }) => (
             <RecipeItem key={uri} uri={uri} label={label} />

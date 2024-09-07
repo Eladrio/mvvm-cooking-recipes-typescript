@@ -1,12 +1,11 @@
 import "./homeView.scss";
-import React from "react";
-
-import { SEARCH_ROUTE, CREATE_ROUTE } from "../../constants/routes";
 
 import useHomeViewController from "../../viewController/useHomeViewController";
 import OptionCardComponent from "../../components/optionCard/optionCard";
 
-const HomeView = () => {
+import { SEARCH_ROUTE, CREATE_ROUTE } from "../../constants/routes";
+
+const HomeView: React.FC = (): JSX.Element => {
   const { handleRedirect } = useHomeViewController();
   return (
     <article className="home-view">

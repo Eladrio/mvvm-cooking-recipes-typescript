@@ -1,7 +1,5 @@
 import "./createdRecipesView.scss";
 
-import React from "react";
-
 import useCreatedViewController from "../../viewController/useCreatedViewController";
 
 const CreatedRecipesView = () => {
@@ -30,7 +28,7 @@ const CreatedRecipesView = () => {
           <div className="card-deck">{createdRecipes}</div>
         </section>
       )}
-      {error && <span>There was an error fetching the recipes</span>}
+      {error ? <span>There was an error fetching the recipes</span> : null}
       <button className={`${baseClassName}__create-link`} onClick={handleCreateClick}>
         Create a Recipe
       </button>
