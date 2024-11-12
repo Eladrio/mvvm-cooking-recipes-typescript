@@ -1,4 +1,3 @@
-import "./inputComponent.scss";
 import React, {
   ChangeEvent,
   ComponentPropsWithoutRef,
@@ -6,6 +5,7 @@ import React, {
   HTMLInputTypeAttribute,
 } from "react";
 import { InputNames } from "../../types/recipeTypes";
+import { InputComponentBlock, InputComponentContainer, InputComponentElement, InputComponentError, InputComponentTextArea } from "./styledComponents";
 
 type InputComponentPropsType = {
   handleInputBlur: (e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
@@ -30,18 +30,17 @@ const InputComponent: React.FC<InputComponentPropsType> = ({
   value,
 }) => {
   const errorElement: JSX.Element = (
-    <span className="input-component__error">There is an error in this input</span>
+    <InputComponentError className="input-component__error">There is an error in this input</InputComponentError>
   );
 
   return (
-    <div className="input-component">
-      <label className="input-component__label" htmlFor={id}>
+    <InputComponentContainer>
+      <label htmlFor={id}>
         {label}
       </label>
-      <div className="input-component__block">
+      <InputComponentBlock>
         {type === "textarea" ? (
-          <textarea
-            className="input-component__input-element input-component__input-element--textarea"
+          <InputComponentTextArea
             id={id}
             name={name}
             onChange={handleInputChange}
@@ -49,9 +48,8 @@ const InputComponent: React.FC<InputComponentPropsType> = ({
             value={value}
           />
         ) : (
-          <input
+          <InputComponentElement
             autoComplete="off"
-            className="input-component__input-element"
             id={id}
             name={name}
             type={type}
@@ -62,8 +60,8 @@ const InputComponent: React.FC<InputComponentPropsType> = ({
         )}
 
         {!valid && errorElement}
-      </div>
-    </div>
+      </InputComponentBlock>
+    </InputComponentContainer>
   );
 };
 

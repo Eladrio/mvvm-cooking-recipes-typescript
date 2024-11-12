@@ -1,3 +1,4 @@
+import { RecipeItemStyles } from "./styledComponents";
 
 type RecipeItemPropsType =  {
   label: string;
@@ -6,8 +7,8 @@ type RecipeItemPropsType =  {
 
 export default function RecipeItem({ uri, label }: RecipeItemPropsType) {
   return (
-    <div className="recipe-item" key={uri}>
+    <RecipeItemStyles key={uri}>
       {label}
-    </div>
+    </RecipeItemStyles>
   );
 }

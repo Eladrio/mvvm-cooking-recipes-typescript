@@ -1,6 +1,7 @@
 import "./createdRecipesView.scss";
 
 import useCreatedViewController from "../../viewController/useCreatedViewController";
+import RecipeCard from "../../components/recipeCard/recipeCard";
 
 const CreatedRecipesView = () => {
   const { recipes, error, handleCreateClick } = useCreatedViewController();
@@ -8,16 +9,7 @@ const CreatedRecipesView = () => {
   const createdRecipes =
     !!recipes.length &&
     recipes.map((recipe) => (
-      <div key={recipe.name} className={`card ${baseClassName}__created-card`}>
-        <div className="card-body">
-          <h3 className={`card-title ${baseClassName}__card-title`}>{recipe.name}</h3>
-          <div className="card-text">
-            <p>{recipe.description}</p>
-            <p>{recipe.ingredients.join(", ")}</p>
-            <p>Cooking time: {recipe.time} minutes</p>
-          </div>
-        </div>
-      </div>
+      <RecipeCard key={recipe.name} recipe={recipe} />
     ));
 
   return (

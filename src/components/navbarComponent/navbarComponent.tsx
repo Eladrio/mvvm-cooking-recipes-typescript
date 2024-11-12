@@ -1,7 +1,7 @@
-import "./navbarComponent.scss";
 import { Link, useLocation } from "react-router-dom";
 
 import { ROUTES } from "../../constants/routes";
+import { NavbarTitleStyles } from "./styledComponents";
 
 const NavbarComponent: React.FC = () => {
   const { pathname } = useLocation();
@@ -23,8 +23,8 @@ const NavbarComponent: React.FC = () => {
       break;
   }
   return (
-    <nav className="navbar-component navbar navbar-expand-lg navbar-dark bg-dark">
-      <span className="navbar-component__title navbar-brand">Recipe App</span>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <NavbarTitleStyles className="navbar-brand">Recipe App</NavbarTitleStyles>
       <div id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
           <li className={`nav-item${currentActiveTab === '01' ? " active" : ""}`}>

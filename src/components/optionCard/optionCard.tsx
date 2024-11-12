@@ -1,5 +1,5 @@
-import "./optionCard.scss";
 import { ReactNode } from "react";
+import { OptionCardStyles } from "./styledComponents";
 
 type OptionCardComponentPropsType = {
   children: ReactNode;
@@ -28,7 +28,7 @@ const OptionCardComponent: OptionCardComponentType = ({ children, onClick }) => 
   const handleClick = () => {
     onClick();
   }
-  return <div className="option-card-component" onClick={handleClick}>{children}</div>;
+  return <OptionCardStyles onClick={handleClick}>{children}</OptionCardStyles>;
 };
 
 OptionCardComponent.Header = Header;
