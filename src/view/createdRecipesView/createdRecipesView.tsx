@@ -1,11 +1,10 @@
-import "./createdRecipesView.scss";
-
 import useCreatedViewController from "../../viewController/useCreatedViewController";
 import RecipeCard from "../../components/recipeCard/recipeCard";
+import { ViewTitle } from "../../styles/ViewSharedStyles";
+import { CreateLink, RecipeList } from "./styledComponents";
 
 const CreatedRecipesView = () => {
   const { recipes, error, handleCreateClick } = useCreatedViewController();
-  const baseClassName = "created-recipes-view";
   const createdRecipes =
     !!recipes.length &&
     recipes.map((recipe) => (
@@ -13,17 +12,17 @@ const CreatedRecipesView = () => {
     ));
 
   return (
-    <article className={baseClassName}>
-      <h1 className={`${baseClassName}__title`}>These are your Recipes</h1>
+    <article>
+      <ViewTitle>These are your Recipes</ViewTitle>
       {!!recipes.length && !error && (
-        <section className={`${baseClassName}__recipes-list`}>
+        <RecipeList>
           <div className="card-deck">{createdRecipes}</div>
-        </section>
+        </RecipeList>
       )}
       {error ? <span>There was an error fetching the recipes</span> : null}
-      <button className={`${baseClassName}__create-link`} onClick={handleCreateClick}>
+      <CreateLink onClick={handleCreateClick}>
         Create a Recipe
-      </button>
+      </CreateLink>
     </article>
   );
 };

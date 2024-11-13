@@ -1,5 +1,6 @@
 import React from "react";
-import "./createRecipeView.scss";
+import { ViewTitle } from '../../styles/ViewSharedStyles';
+import { Section, SectionTitle, FormWrapper, Card } from './styledComponents';
 import useCreateRecipeViewController from "../../viewController/useCreateRecipeViewController";
 import CreateRecipeForm from "./components/createRecipeForm/createRecipeForm";
 
@@ -14,7 +15,7 @@ const CreateRecipeView = () => {
     addError,
   } = useCreateRecipeViewController();
   const createdRecipes = !!recipes.length && recipes.map((recipe) => (
-    <div key={recipe.name} className="card create-recipe-view__created-card">
+    <Card key={recipe.name} className="card">
       <div className="card-body">
         <h3 className="card-title">{recipe.name}</h3>
         <div className="card-text">
@@ -22,29 +23,30 @@ const CreateRecipeView = () => {
           <p>{recipe.ingredients.join(', ')}</p>
         </div>
       </div>
-    </div>
+    </Card>
   ));
 
   return (
-    <article className="create-recipe-view">
-      <h1 className="create-recipe-view__title">Create your recipe</h1>
-      <section className="create-recipe-view__section">
-        <h2 className="create-recipe-view__section-title">Enter recipe info</h2>
-        <CreateRecipeForm
-          className="create-recipe-view__form-item"
-          inputs={inputs}
-          handleSubmit={handleFormSubmit}
-          handleInputBlur={handleInputBlur}
-          handleInputChange={handleInputChange}
-        />
-      </section>
+    <article>
+      <ViewTitle>Create your recipe</ViewTitle>
+      <Section>
+        <SectionTitle>Enter recipe info</SectionTitle>
+        <FormWrapper>
+          <CreateRecipeForm
+            inputs={inputs}
+            handleSubmit={handleFormSubmit}
+            handleInputBlur={handleInputBlur}
+            handleInputChange={handleInputChange}
+          />
+        </FormWrapper>
+      </Section>
       {!!recipes.length && !(error || addError) && (
-        <section className="create-recipe-view__section">
-          <h2 className="create-recipe-view__section-title">
+        <Section>
+          <SectionTitle>
             Here are some of the recipes you've already created
-          </h2>
+          </SectionTitle>
           <div className="card-deck">{createdRecipes}</div>
-        </section>
+        </Section>
       )}
       {error && <span>There was an error fetching the recipes</span>}
       {addError && <span>There was an error creating the recipes</span>}
