@@ -1,4 +1,5 @@
 import { FormEvent, ReactNode } from "react";
+import { SubmitButton } from "./styledComponents";
 
 type FormComponentPropsType = {
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
@@ -9,7 +10,7 @@ const FormComponent = ({ handleSubmit, children }: FormComponentPropsType) => {
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
       {children}
-      <button type="submit">Submit</button>
+      <SubmitButton type="submit">Submit</SubmitButton>
     </form>
   );
 };

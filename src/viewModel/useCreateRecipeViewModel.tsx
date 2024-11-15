@@ -6,7 +6,7 @@ import { validateInput as validate } from "../helpers/inputValidations";
 import { CreateRecipeInputsType, InputNames, ValidateCreateRecipeType } from "../types/recipeTypes";
 
 const useCreateRecipeViewModel = () => {
-  const { createRecipe, recipes, error, addError } = useCreateRecipeModel();
+  const { createRecipe, recipes, error, addError, isAddSuccess, deleteError, deleteRecipe } = useCreateRecipeModel();
 
   // checks that every input has a valid value before calling createRecipe from the Model
   const validateCreateRecipe = useCallback(
@@ -64,7 +64,10 @@ const useCreateRecipeViewModel = () => {
     recipes,
     error,
     addError,
+    isAddSuccess,
     validateInput,
+    deleteError,
+    deleteRecipe
   };
 };
 

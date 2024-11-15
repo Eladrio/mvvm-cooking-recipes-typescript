@@ -3,7 +3,8 @@ import { useCreateRecipeAPI } from "./api/useCreateRecipeAPI";
 import { CreatedRecipe } from "../types/recipeTypes";
 
 const useCreateRecipeModel = () => {
-  const { mutate, error, recipes, addError } = useCreateRecipeAPI();
+  const { mutate, error, recipes, addError, isAddSuccess, deleteRecipeMutate, deleteError } =
+    useCreateRecipeAPI();
 
   const createRecipe = useCallback(
     (data: CreatedRecipe) => {
@@ -11,11 +12,22 @@ const useCreateRecipeModel = () => {
     },
     [mutate]
   );
+
+  const deleteRecipe = useCallback(
+    (id: string) => {
+      deleteRecipeMutate(id);
+    },
+    [deleteRecipeMutate]
+  );
+
   return {
     createRecipe,
     recipes,
     error,
     addError,
+    isAddSuccess,
+    deleteRecipe,
+    deleteError,
   };
 };
 

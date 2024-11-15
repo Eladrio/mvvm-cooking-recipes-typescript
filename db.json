@@ -1,41 +1,43 @@
 {
   "recipes": [
     {
-      "id": "01",
-      "name": "Spaghetti Bolognese",
+      "id": "1551",
+      "name": "Pizza Neapolitan",
+      "description": "A tasty neapolitan pizza",
       "ingredients": [
-        "500g ground beef",
-        "1 onion",
-        "2 cloves garlic",
-        "1 can tomatoes",
-        "200g spaghetti",
-        "1 tsp olive oil",
-        "Salt and pepper to taste"
+        "Flour 1kg",
+        "Mozarella 400g",
+        "Tomato Soup 200g",
+        "Tomato 1"
       ],
-      "time": 30,
-      "description": "Classic Italian dish with savory ground beef and tomato sauce served over a bed of perfectly cooked spaghetti."
+      "time": 40
     },
     {
-      "id": "a46f",
-      "name": "Pizza",
-      "description": "Pizza crocante",
+      "id": "849f",
+      "name": "steak",
+      "description": "A tasty steak",
       "ingredients": [
-        "Queso 400g",
-        "Harina 200g",
-        "Salsa de Tomate 100g"
+        "Cow meat 1 kilo"
       ],
-      "time": 33
+      "time": 34
     },
     {
-      "id": "42da",
-      "name": "Napolitana",
-      "description": "Pizza Napolitana Crocante",
+      "id": "3ddd",
+      "name": "Roasted Duck",
+      "description": "Delicious Roasted Duck",
       "ingredients": [
-        "Sal",
-        "Queso",
-        "Mozzarella"
+        "Duck 1"
       ],
-      "time": 23
+      "time": 45
+    },
+    {
+      "id": "3a3a",
+      "name": "pizza",
+      "description": "Alisms",
+      "ingredients": [
+        "isnsin1 293"
+      ],
+      "time": 29
     }
   ]
 }

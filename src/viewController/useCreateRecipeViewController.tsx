@@ -25,7 +25,7 @@ const initialState: CreateRecipeInputsType = {
 const useCreateRecipeViewController = () => {
   const [inputs, setInputs] = useState<CreateRecipeInputsType>(initialState);
 
-  const { createRecipe, recipes, error, addError, validateInput } = useCreateRecipeViewModel();
+  const { createRecipe, recipes, error, addError, isAddSuccess, validateInput } = useCreateRecipeViewModel();
 
   const handleInputChange = useCallback((name: InputNames, value: string) => {
     setInputs((prevInputs) => ({
@@ -73,6 +73,7 @@ const useCreateRecipeViewController = () => {
     recipes,
     error,
     addError,
+    isAddSuccess,
   };
 };
 

@@ -1,28 +1,43 @@
+import { ErrorElement, ViewTitle } from "../../styles/ViewSharedStyles";
+import { CreateLink, RecipeListContainer, RecipeList, ErrorContainer } from "./styledComponents";
 import useCreatedViewController from "../../viewController/useCreatedViewController";
 import RecipeCard from "../../components/recipeCard/recipeCard";
-import { ViewTitle } from "../../styles/ViewSharedStyles";
-import { CreateLink, RecipeList } from "./styledComponents";
+import { useEffect, useRef } from "react";
 
 const CreatedRecipesView = () => {
-  const { recipes, error, handleCreateClick } = useCreatedViewController();
+  const { recipes, error, handleCreateClick, handleDeleteRecipeClick } = useCreatedViewController();
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  
+  useEffect(() => {
+    if (headingRef.current) {
+      headingRef.current.focus();
+    }
+  }, []);
+
   const createdRecipes =
     !!recipes.length &&
     recipes.map((recipe) => (
-      <RecipeCard key={recipe.name} recipe={recipe} />
+      <li key={recipe.name}>
+        <RecipeCard handleButtonClick={handleDeleteRecipeClick} recipe={recipe} />
+      </li>
     ));
 
   return (
     <article>
-      <ViewTitle>These are your Recipes</ViewTitle>
+      <header>
+        <ViewTitle tabIndex={-1} ref={headingRef}>These are your Recipes</ViewTitle>
+      </header>
       {!!recipes.length && !error && (
-        <RecipeList>
-          <div className="card-deck">{createdRecipes}</div>
-        </RecipeList>
+        <RecipeListContainer>
+          <RecipeList className="card-deck">{createdRecipes}</RecipeList>
+        </RecipeListContainer>
       )}
-      {error ? <span>There was an error fetching the recipes</span> : null}
-      <CreateLink onClick={handleCreateClick}>
-        Create a Recipe
-      </CreateLink>
+      {error ? (
+        <ErrorContainer>
+          <ErrorElement aria-live="assertive">There was an error fetching the recipes</ErrorElement>
+        </ErrorContainer>
+      ) : null}
+      <CreateLink onClick={handleCreateClick}>Create a Recipe</CreateLink>
     </article>
   );
 };

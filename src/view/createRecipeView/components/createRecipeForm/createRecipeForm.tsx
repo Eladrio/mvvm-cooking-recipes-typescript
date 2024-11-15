@@ -26,6 +26,7 @@ const CreateRecipeForm: React.FC<CreateRecipeFormPropsType> = ({
           type="text"
           value={inputs.name.value}
           valid={inputs.name.valid}
+          errorMessage={'Please enter a valid name for the recipe'}
           handleInputBlur={(e) => handleInputBlur(e.target.name as InputNames, e.target.value)}
           handleInputChange={(e) => handleInputChange(e.target.name as InputNames, e.target.value)}
         />
@@ -38,6 +39,7 @@ const CreateRecipeForm: React.FC<CreateRecipeFormPropsType> = ({
           type="textarea"
           value={inputs.description.value}
           valid={inputs.description.valid}
+          errorMessage={'Please enter a valid description for the recipe'}
           handleInputBlur={(e) => handleInputBlur(e.target.name as InputNames, e.target.value)}
           handleInputChange={(e) => handleInputChange(e.target.name as InputNames, e.target.value)}
         />
@@ -50,6 +52,7 @@ const CreateRecipeForm: React.FC<CreateRecipeFormPropsType> = ({
           type="textarea"
           value={inputs.ingredients.value}
           valid={inputs.ingredients.valid}
+          errorMessage={'Please enter valid ingredients for the recipe'}
           handleInputBlur={(e) => handleInputBlur(e.target.name as InputNames, e.target.value)}
           handleInputChange={(e) => handleInputChange(e.target.name as InputNames, e.target.value)}
         />
@@ -62,6 +65,7 @@ const CreateRecipeForm: React.FC<CreateRecipeFormPropsType> = ({
           type="number"
           value={inputs.time.value}
           valid={inputs.time.valid}
+          errorMessage={'Please enter a valid time for the recipe'}
           handleInputBlur={(e) => handleInputBlur(e.target.name as InputNames, e.target.value)}
           handleInputChange={(e) => handleInputChange(e.target.name as InputNames, e.target.value)}
         />

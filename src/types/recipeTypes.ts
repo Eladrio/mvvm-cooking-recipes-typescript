@@ -21,6 +21,14 @@ export interface CreatedRecipe {
   time: number;
 }
 
+export interface RecipeItemAPI {
+  name: string;
+  description: string;
+  ingredients: string[];
+  time: number;
+  id: string;
+}
+
 export interface ValidateCreateRecipeType {
   isValid: boolean;
   formattedData: CreatedRecipe;

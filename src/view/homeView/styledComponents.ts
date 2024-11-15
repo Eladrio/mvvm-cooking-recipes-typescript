@@ -9,10 +9,10 @@ export const OptionsSection = styled.section`
   gap: 80px;
 `;
 
-export const OptionTitle = styled.div`
+export const OptionTitle = styled.h2`
   font-size: 28px;
 `;
 
-export const OptionDescription = styled.div`
+export const OptionDescription = styled.p`
   font-size: 20px;
 `;

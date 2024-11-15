@@ -22,7 +22,7 @@ export const FormWrapper = styled.div`
   margin-bottom: 20px;
 `;
 
-export const Card = styled.div`
+export const Card = styled.article`
   margin: 10px;
   box-shadow: 0px 0px 4px 0px black;
   background-color: floralwhite;

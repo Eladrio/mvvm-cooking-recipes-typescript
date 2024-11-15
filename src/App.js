@@ -12,7 +12,7 @@ const HomeView = React.lazy(() => import("./view/homeView/homeView"));
 
 function App() {
   return (
-    <div className="App">
+    <main className="App">
       <BrowserRouter>
         <NavbarComponent />
         <React.Suspense fallback="loading...">
@@ -24,7 +24,7 @@ function App() {
           </Routes>
         </React.Suspense>
       </BrowserRouter>
-    </div>
+    </main>
   );
 }
 

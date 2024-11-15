@@ -4,14 +4,22 @@ import { Input, InputLabel, ResultsContainer, SearchForm } from "./styledCompone
 import useSearchRecipeViewController from "../../viewController/useSearchRecipeViewController";
 // component
 import RecipeItem from "../../components/recipeItem/recipeItem";
+import { useEffect, useRef } from "react";
 
 const SearchRecipeView: React.FC = (): JSX.Element => {
   const { error, recipes, isLoading, handleFormSubmit, onSearchRecipeChange, searchInputValue } =
     useSearchRecipeViewController();
+  const headingRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    if (headingRef.current) {
+      headingRef.current.focus();
+    }
+  }, []);
 
   return (
     <article className="search-recipe-view">
-      <ViewTitle>Search Recipe Page</ViewTitle>
+      <ViewTitle tabIndex={-1} ref={headingRef}>Search Recipe Page</ViewTitle>
       <SearchForm onSubmit={handleFormSubmit}>
         <InputLabel htmlFor="searchInputId">
           Enter recipe's name
@@ -25,9 +33,9 @@ const SearchRecipeView: React.FC = (): JSX.Element => {
         />
         <button type="submit">Search</button>
       </SearchForm>
-      <ResultsContainer>
+      <ResultsContainer aria-live="polite">
         {isLoading && <span aria-live="polite">The Search is Loading...</span>}
-        {error ? <span aria-live="assertive">There was an error fetching the recipes. Please try again.</span> : null}
+        {error ? <span role="alert">There was an error fetching the recipes. Please try again.</span> : null}
         {recipes?.length > 0 &&
           recipes.map(({ recipe: { uri, label } }) => (
             <RecipeItem key={uri} uri={uri} label={label} />

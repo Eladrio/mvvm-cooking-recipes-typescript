@@ -4,36 +4,44 @@ import { OptionsSection, OptionTitle, OptionDescription } from "./styledComponen
 import useHomeViewController from "../../viewController/useHomeViewController";
 import OptionCardComponent from "../../components/optionCard/optionCard";
 
-import { SEARCH_ROUTE, CREATE_ROUTE } from "../../constants/routes";
+import { SEARCH_ROUTE, CREATE_ROUTE, CREATED_RECIPES_ROUTE } from "../../constants/routes";
+import { useEffect, useRef } from "react";
 
 const HomeView: React.FC = (): JSX.Element => {
   const { handleRedirect } = useHomeViewController();
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  useEffect(() => {
+    if (headingRef.current) {
+      headingRef.current.focus();
+    }
+  }, []);
+
   return (
     <article>
-      <ViewTitle>Homepage of Recipes App</ViewTitle>
+      <ViewTitle tabIndex={-1} ref={headingRef}>Homepage of Recipes App</ViewTitle>
       <OptionsSection>
         <OptionCardComponent onClick={() => handleRedirect(SEARCH_ROUTE)}>
           <OptionCardComponent.Header>
-            <OptionTitle>
-              <h2>Search recipe</h2>
-            </OptionTitle>
+            <OptionTitle>Search recipe</OptionTitle>
           </OptionCardComponent.Header>
           <OptionCardComponent.Body>
-            <OptionDescription>
-              <p>Find the recipe you are looking for</p>
-            </OptionDescription>
+            <OptionDescription>Find the recipe you are looking for</OptionDescription>
           </OptionCardComponent.Body>
         </OptionCardComponent>
         <OptionCardComponent onClick={() => handleRedirect(CREATE_ROUTE)}>
           <OptionCardComponent.Header>
-            <OptionTitle>
-              <h2>Create recipe</h2>
-            </OptionTitle>
+            <OptionTitle>Create recipe</OptionTitle>
           </OptionCardComponent.Header>
           <OptionCardComponent.Body>
-            <OptionDescription>
-              <p>Make your own recipe</p>
-            </OptionDescription>
+            <OptionDescription>Make your own recipe</OptionDescription>
+          </OptionCardComponent.Body>
+        </OptionCardComponent>
+        <OptionCardComponent onClick={() => handleRedirect(CREATED_RECIPES_ROUTE)}>
+          <OptionCardComponent.Header>
+            <OptionTitle>Your recipes</OptionTitle>
+          </OptionCardComponent.Header>
+          <OptionCardComponent.Body>
+            <OptionDescription>Scroll through your created recipes</OptionDescription>
           </OptionCardComponent.Body>
         </OptionCardComponent>
       </OptionsSection>

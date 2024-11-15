@@ -1,7 +1,6 @@
-import { Link, useLocation } from "react-router-dom";
-
-import { ROUTES } from "../../constants/routes";
 import { NavbarTitleStyles } from "./styledComponents";
+import { Link, useLocation } from "react-router-dom";
+import { ROUTES } from "../../constants/routes";
 
 const NavbarComponent: React.FC = () => {
   const { pathname } = useLocation();
